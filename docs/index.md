@@ -13,6 +13,7 @@ This site is where I keep durable notes on agents, AI engineering, and software 
 - [ReAct Agent 学习笔记](./blog/posts/react-agent-notes.md)
 - [Agent Notes](./notes/index.md)
 - [快速开始：如何读这些笔记](./notes/reading-route.md)
+- [Deep Learning 专题导读](./notes/deep-learning/index.md)
 
 ## What This Site Is
 

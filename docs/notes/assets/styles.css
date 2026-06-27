@@ -25,3 +25,144 @@
 .md-typeset li {
   line-height: 1.72;
 }
+
+.md-typeset .dl-figure {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 920px;
+  height: auto;
+  margin: 1.2rem auto;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.35rem;
+  background: var(--md-default-bg-color);
+}
+
+.md-typeset .dl-compact-figure {
+  max-width: 560px;
+}
+
+.md-typeset .dl-box,
+.md-typeset .dl-token {
+  fill: var(--md-default-bg-color);
+  stroke: #6d6d6d;
+  stroke-width: 1.5;
+}
+
+.md-typeset .dl-box-accent,
+.md-typeset .dl-token-accent {
+  fill: #eef5ff;
+  stroke: #2f5f9f;
+  stroke-width: 1.8;
+}
+
+.md-typeset .dl-token-muted {
+  fill: #f4f4f4;
+  stroke: #a0a0a0;
+  stroke-width: 1.3;
+}
+
+.md-typeset .dl-node {
+  fill: var(--md-default-bg-color);
+  stroke: #6d6d6d;
+  stroke-width: 1.5;
+}
+
+.md-typeset .dl-node-accent {
+  fill: #eef5ff;
+  stroke: #2f5f9f;
+  stroke-width: 1.6;
+}
+
+.md-typeset .dl-label {
+  fill: currentColor;
+  font-size: 20px;
+  font-weight: 650;
+}
+
+.md-typeset .dl-small {
+  fill: currentColor;
+  font-size: 15px;
+}
+
+.md-typeset .dl-arrow,
+.md-typeset .dl-axis {
+  stroke: #2f5f9f;
+  stroke-width: 2;
+  fill: none;
+}
+
+.md-typeset .dl-muted-arrow {
+  stroke: #8a8a8a;
+  stroke-width: 1.8;
+  fill: none;
+}
+
+.md-typeset .dl-back-arrow {
+  stroke: #b35c23;
+  stroke-width: 2;
+  fill: none;
+}
+
+.md-typeset .dl-thin {
+  stroke: #8d8d8d;
+  stroke-width: 1.2;
+  fill: none;
+}
+
+.md-typeset .dl-curve {
+  stroke: #4d4d4d;
+  stroke-width: 2.5;
+}
+
+.md-typeset .dl-curve-muted {
+  stroke: #9a9a9a;
+  stroke-width: 2;
+}
+
+.md-typeset .dl-point {
+  fill: #2f5f9f;
+}
+
+.md-typeset .dl-point-warn {
+  fill: #b35c23;
+}
+
+.md-typeset .dl-line-blue {
+  stroke: #2f5f9f;
+  stroke-width: 2.5;
+}
+
+.md-typeset .dl-line-green {
+  stroke: #2f7d55;
+  stroke-width: 2.5;
+}
+
+.md-typeset .dl-line-orange {
+  stroke: #b35c23;
+  stroke-width: 2.5;
+}
+
+.md-typeset .dl-blue {
+  fill: #2f5f9f;
+}
+
+.md-typeset .dl-green {
+  fill: #2f7d55;
+}
+
+.md-typeset .dl-orange {
+  fill: #b35c23;
+}
+
+.md-typeset .dl-cell-on {
+  fill: #eef5ff;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.md-typeset .dl-cell-off {
+  fill: #f0f0f0;
+  stroke: #ffffff;
+  stroke-width: 2;
+}

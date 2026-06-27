@@ -50,3 +50,11 @@
 | ReAct 为什么需要环境反馈 | [SWE-agent](papers/swe-agent.md) |
 | 换模型时不能乱动 agent loop | [实现与 provider 边界](topics/implementation-boundaries.md) |
 | memory 不是把所有历史塞进 prompt | [长期记忆](topics/long-term-memory.md) |
+
+如果你想先补深度学习基础，按这个顺序读：
+
+1. [神经网络的结构](deep-learning/neural-network-structure.md)
+2. [梯度下降法](deep-learning/gradient-descent.md)
+3. [反向传播算法](deep-learning/backpropagation.md)
+4. [GPT 是什么？直观讲解 Transformer](deep-learning/gpt-transformer.md)
+5. [直观解释注意力机制，Transformer 的核心](deep-learning/attention.md)
