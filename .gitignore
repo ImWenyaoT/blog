@@ -1,8 +1,28 @@
-# 系统 / 编辑器垃圾
+# 系统 / 编辑器
 .DS_Store
+.idea/
+.vscode/
+
+# Python / uv
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+.cache/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# MkDocs
+site/
 docs/site/
+
+# 本地工具
+.playwright-cli/
 
 # resume.io 是独立的 GitHub 仓库，不收进本仓库
 applications/resume-io/

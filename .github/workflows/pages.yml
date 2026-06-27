@@ -1,4 +1,4 @@
-name: Deploy MkDocs to GitHub Pages
+name: Deploy Blog to GitHub Pages
 
 on:
   push:
@@ -27,19 +27,24 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install MkDocs dependencies
-        run: pip install -r docs/notes/requirements-mkdocs.txt
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libcairo2
+
+      - name: Install dependencies
+        run: uv sync --frozen
 
       - name: Build site
-        run: mkdocs build --config-file docs/notes/mkdocs.yml --strict
-
-      - name: Copy paper assets
-        run: cp -R docs/paper docs/site/paper
+        run: uv run mkdocs build --strict
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/site
+          path: site
 
   deploy:
     needs: build
