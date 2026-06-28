@@ -16,7 +16,12 @@ theme:
   icon:
     logo: logo-monochrome
   features:
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
     - navigation.indexes
+    - navigation.path
+    - navigation.sections
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -34,8 +39,11 @@ theme:
         name: 跟随系统设置
 markdown_extensions:
   - attr_list
+  - md_in_html
   - tables
   - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -91,6 +99,7 @@ plugins:
         background_color: transparent
       cards_layout_dir: layouts
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/_wenyao
