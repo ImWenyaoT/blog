@@ -12,6 +12,18 @@
 
 Query 和 Key 的相似度越高，对应 Value 的权重越大。
 
+## 动机
+
+序列里的一个 token 往往需要参考其他 token 才能理解。比如“它”指代谁、“学习”修饰什么、“not” 是否改变后面动词的含义，都依赖上下文。
+
+注意力机制提供了一种可微的查找方式：
+
+```text
+当前位置提出查询 -> 和上下文位置匹配 -> 按权重汇总信息
+```
+
+这个机制很适合替代“只靠固定窗口”或“只靠单一隐藏状态”的序列建模方法。
+
 ## Q/K/V 流程
 
 <svg class="dl-figure" viewBox="0 0 920 360" role="img" aria-labelledby="qkv-title">
@@ -47,12 +59,8 @@ Query 和 Key 的相似度越高，对应 Value 的权重越大。
 ## 最小 scaled dot-product attention
 
 ```python
-import torch
-import torch.nn.functional as F
-
-
 def scaled_dot_product_attention(q, k, v, mask=None):
-    """计算缩放点积注意力，并返回加权后的表示和注意力权重。"""
+    """用 PyTorch-like 公式表达缩放点积注意力。"""
     dim = q.size(-1)
     scores = q @ k.transpose(-2, -1) / dim ** 0.5
 
@@ -65,8 +73,8 @@ def scaled_dot_product_attention(q, k, v, mask=None):
 
 
 def make_causal_mask(seq_len):
-    """创建下三角 causal mask，防止当前位置看到未来 token。"""
-    return torch.tril(torch.ones(seq_len, seq_len)).unsqueeze(0)
+    """创建下三角 mask：当前位置只能看自己和左侧 token。"""
+    return tril(ones(seq_len, seq_len)).unsqueeze(0)
 ```
 
 这就是注意力的核心。真实 Transformer 会把输入先分别投影成 Q、K、V，再做多头注意力、残差连接和 LayerNorm。
@@ -120,6 +128,35 @@ def make_causal_mask(seq_len):
 | `scores` | `[B, T, T]` | 每个位置对每个位置的相似度。 |
 | `weights` | `[B, T, T]` | softmax 后的注意力权重。 |
 | `output` | `[B, T, D]` | 加权汇总后的新表示。 |
+
+## 直观理解
+
+### Query 是问题，Key 是索引，Value 是内容
+
+可以把一段上下文想成一个小型资料库。当前 token 的 Query 像是在问“我需要哪类信息”；每个上下文 token 的 Key 像是目录索引；Value 才是真正要取回的内容。
+
+### softmax 为什么必要
+
+`q @ k.T` 得到的是任意实数分数。softmax 把它们变成非负、总和为 1 的权重。这样输出就可以解释成对 Value 的加权平均：
+
+```python
+weights = softmax(scores)
+output = weights @ values
+```
+
+### Multi-head 不是重复劳动
+
+一个注意力头只能在一个表示子空间里匹配关系。多头注意力让模型并行学习不同关系：有的头可能更关注局部搭配，有的头可能更关注长距离指代，有的头可能关注语法角色。
+
+## 限制
+
+- 注意力热力图有解释价值，但不能直接等同于模型真正的因果解释。
+- 自注意力的计算量随序列长度近似平方增长，长上下文会变贵。
+- 注意力只是一层的信息汇总机制，Transformer 的能力还来自残差、归一化、MLP、训练数据和优化。
+
+## 阅读更多
+
+回到 [GPT 是什么？直观讲解 Transformer](gpt-transformer.md)，可以把注意力机制重新放进完整 Transformer block 中理解。
 
 ## 小结
 
