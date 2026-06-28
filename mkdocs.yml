@@ -8,6 +8,7 @@ site_url: https://imwenyaot.github.io/blog/
 edit_uri: edit/main/docs/
 exclude_docs: |
   notes/mkdocs.yml
+  blog/tags.md
 theme:
   name: material
   language: zh
@@ -45,31 +46,25 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
 nav:
   - Home: index.md
+  - Deep Learning:
+      - Topic 导读: notes/deep-learning/index.md
+      - 神经网络的结构: notes/deep-learning/neural-network-structure.md
+      - 梯度下降法: notes/deep-learning/gradient-descent.md
+      - 反向传播算法: notes/deep-learning/backpropagation.md
+      - GPT 是什么: notes/deep-learning/gpt-transformer.md
+      - 注意力机制: notes/deep-learning/attention.md
+  - AI Agent:
+      - Topic 导读: notes/ai-agent/index.md
+      - Agent 基本概念: notes/topics/agent-basics.md
+      - 实现与 provider 边界: notes/topics/implementation-boundaries.md
+      - 长期记忆: notes/topics/long-term-memory.md
+      - Papers:
+          - ReAct: notes/papers/react.md
+          - SWE-agent: notes/papers/swe-agent.md
   - Tags: tags.md
-  - Blog:
-      - blog/index.md
-      - blog/tags.md
   - Notes:
       - 介绍: notes/index.md
       - 快速开始: notes/reading-route.md
-      - Topics:
-          - AI Agent:
-              - Topic 导读: notes/ai-agent/index.md
-              - Articles:
-                  - Agent 基本概念: notes/topics/agent-basics.md
-                  - 实现与 provider 边界: notes/topics/implementation-boundaries.md
-                  - 长期记忆: notes/topics/long-term-memory.md
-              - Papers:
-                  - ReAct: notes/papers/react.md
-                  - SWE-agent: notes/papers/swe-agent.md
-          - Deep Learning:
-              - Topic 导读: notes/deep-learning/index.md
-              - Articles:
-                  - 神经网络的结构: notes/deep-learning/neural-network-structure.md
-                  - 梯度下降法: notes/deep-learning/gradient-descent.md
-                  - 反向传播算法: notes/deep-learning/backpropagation.md
-                  - GPT 是什么: notes/deep-learning/gpt-transformer.md
-                  - 注意力机制: notes/deep-learning/attention.md
 plugins:
   - search
   - blog:

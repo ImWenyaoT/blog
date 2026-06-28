@@ -20,9 +20,9 @@ flowchart LR
   T --> A["Attention: 上下文信息路由"]
 ```
 
-## Articles
+## 词条
 
-阅读顺序固定为五篇 article：
+阅读顺序固定为五个词条：
 
 1. [神经网络的结构](neural-network-structure.md)：神经网络是一串带参数的函数组合。
 2. [梯度下降法](gradient-descent.md)：训练是在损失曲面上调整参数。
