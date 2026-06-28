@@ -1,36 +1,14 @@
-# 系统 / 编辑器
+# 依赖与构建产物
+node_modules/
+dist/
+.astro/
+
+# 系统/编辑器
 .DS_Store
 .idea/
 .vscode/
 
-# Python / uv
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.egg-info/
-.venv/
-.cache/
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-build/
-dist/
-
-# MkDocs
-site/
-docs/site/
-
-# 本地工具
-.playwright-cli/
-
-# resume.io 是独立的 GitHub 仓库，不收进本仓库
-applications/resume-io/
-
-# 临时收件箱 + 探针目录，整理完再决定要哪些
-materials/photos-inbox/
-
-# 大体积参考资料 / 模板 / 附件 —— 单独备份，不进 git 历史
-materials/references/
-resume/templates/
-archive/*.zip
+# 日志/环境
+*.log
+.env
+.env.*

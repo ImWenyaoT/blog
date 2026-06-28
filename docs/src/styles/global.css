@@ -1,0 +1,162 @@
+/* Tailwind v4 + Starlight 桥接（顺序按 Starlight 官方要求）*/
+@layer base, starlight, theme, components, utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* ── 设计系统：9 色调色板（黑白 + 7 色），新深浅一律用透明度，不加第 10 色 ── */
+@theme {
+  --color-blog-red: rgb(243 47 36);
+  --color-blog-orange: rgb(243 137 0);
+  --color-blog-yellow: rgb(243 192 0);
+  --color-blog-green: rgb(28 193 53);
+  --color-blog-blue: rgb(0 110 243);
+  --color-blog-purple: rgb(157 73 199);
+  --color-blog-gray: rgb(130 130 135);
+}
+
+:root {
+  /* 供 rgb(... / a%) 透明度调色用的三元组 */
+  --blog-blue: 0 110 243;
+  --blog-gray: 130 130 135;
+
+  /* 字体：Google 非衬线（正文 + 代码）*/
+  --sl-font: 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+  --sl-font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* 强调色 = blog blue；深浅靠透明度而非新色 */
+  --sl-color-accent: rgb(var(--blog-blue));
+  --sl-color-accent-low: rgb(var(--blog-blue) / 15%);
+  --sl-color-accent-high: rgb(var(--blog-blue));
+  --sl-color-text-accent: rgb(var(--blog-blue));
+}
+
+[data-theme='light'] {
+  --sl-color-accent-low: rgb(var(--blog-blue) / 12%);
+}
+
+/* ── 深度学习手绘 SVG 图示（dl-*）：从 MkDocs 站迁移，配色映射到设计系统 ── */
+:root {
+  --blog-black: 0 0 0;
+  --blog-orange: 243 137 0;
+  --blog-green: 28 193 53;
+}
+
+.dl-figure {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 920px;
+  height: auto;
+  margin: 1.4rem auto 1.8rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.45rem;
+  background: var(--sl-color-bg);
+}
+.dl-compact-figure {
+  max-width: 560px;
+}
+.dl-box,
+.dl-token {
+  fill: var(--sl-color-bg);
+  stroke: rgb(var(--blog-gray));
+  stroke-width: 1.5;
+}
+.dl-box-accent,
+.dl-token-accent {
+  fill: rgb(var(--blog-blue) / 8%);
+  stroke: rgb(var(--blog-blue));
+  stroke-width: 1.8;
+}
+.dl-token-muted {
+  fill: rgb(var(--blog-gray) / 10%);
+  stroke: rgb(var(--blog-gray) / 72%);
+  stroke-width: 1.3;
+}
+.dl-node {
+  fill: var(--sl-color-bg);
+  stroke: rgb(var(--blog-gray));
+  stroke-width: 1.5;
+}
+.dl-node-accent {
+  fill: rgb(var(--blog-blue) / 8%);
+  stroke: rgb(var(--blog-blue));
+  stroke-width: 1.6;
+}
+.dl-label {
+  fill: var(--sl-color-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+.dl-small {
+  fill: var(--sl-color-text);
+  font-size: 11px;
+}
+.dl-arrow,
+.dl-axis {
+  stroke: rgb(var(--blog-blue));
+  stroke-width: 2;
+  fill: none;
+}
+.dl-muted-arrow {
+  stroke: rgb(var(--blog-gray));
+  stroke-width: 1.8;
+  fill: none;
+}
+.dl-back-arrow {
+  stroke: rgb(var(--blog-orange));
+  stroke-width: 2;
+  fill: none;
+}
+.dl-thin {
+  stroke: rgb(var(--blog-gray));
+  stroke-width: 1.2;
+  fill: none;
+}
+.dl-curve {
+  stroke: rgb(var(--blog-black) / 78%);
+  stroke-width: 2.5;
+}
+.dl-curve-muted {
+  stroke: rgb(var(--blog-gray));
+  stroke-width: 2;
+}
+.dl-point {
+  fill: rgb(var(--blog-blue));
+}
+.dl-point-warn {
+  fill: rgb(var(--blog-orange));
+}
+.dl-line-blue {
+  stroke: rgb(var(--blog-blue));
+  stroke-width: 2.5;
+}
+.dl-line-green {
+  stroke: rgb(var(--blog-green));
+  stroke-width: 2.5;
+}
+.dl-line-orange {
+  stroke: rgb(var(--blog-orange));
+  stroke-width: 2.5;
+}
+.dl-blue {
+  fill: rgb(var(--blog-blue));
+}
+.dl-green {
+  fill: rgb(var(--blog-green));
+}
+.dl-orange {
+  fill: rgb(var(--blog-orange));
+}
+.dl-cell-on {
+  fill: rgb(var(--blog-blue) / 8%);
+  stroke: var(--sl-color-bg);
+  stroke-width: 2;
+}
+.dl-cell-off {
+  fill: rgb(var(--blog-gray) / 10%);
+  stroke: var(--sl-color-bg);
+  stroke-width: 2;
+}

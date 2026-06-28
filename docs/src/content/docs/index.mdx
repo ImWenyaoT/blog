@@ -1,0 +1,46 @@
+---
+title: Wenyao Notes
+description: AI notes, code, papers, and systems.
+template: splash
+hero:
+  tagline: 这里记录我学 AI、写代码、读论文和折腾系统时留下的东西。短的像笔记，长的像文章。
+  actions:
+    - text: 开始阅读
+      link: /notes/ai-agent/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub
+      link: https://github.com/ImWenyaoT
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## 现在主要写什么
+
+<CardGrid>
+  <Card title="Deep Learning" icon="seti:python">
+    从神经网络、梯度下降、反向传播一路读到 Transformer 和注意力机制。
+  </Card>
+  <Card title="AI Agent" icon="rocket">
+    语言模型如何通过工具、环境反馈和 runtime loop 行动。
+  </Card>
+</CardGrid>
+
+## 怎么读论文
+
+<CardGrid>
+  <Card title="先读出问题">
+    只看标题、摘要、引言、图表和结论，先答清“解决什么问题、方法叫什么、和已有做法差在哪”。
+  </Card>
+  <Card title="抓方法和证据">
+    读方法、关键图、实验设置和主要结果，讲清主张和证据链，先不纠结附录。
+  </Card>
+  <Card title="回到代码和失败模式">
+    再看 prompt、接口、parser、guardrails，带着“这个设计减少了哪种错误”去读。
+  </Card>
+  <Card title="复习输出">
+    每篇只留三样：一句话贡献、一个关键机制、一个失败模式或边界。
+  </Card>
+</CardGrid>

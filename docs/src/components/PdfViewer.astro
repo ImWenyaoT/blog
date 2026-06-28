@@ -1,0 +1,69 @@
+---
+// 纯 Astro 组件：用浏览器原生 <iframe> 内嵌 PDF（滚动/缩放/翻页/下载均为浏览器自带），
+// 零额外依赖、不出 Astro/Starlight 栈。样式走 Starlight 主题变量。
+interface Props {
+  src: string;
+  title?: string;
+  arxiv?: string;
+}
+const { src, title = '原文 PDF', arxiv } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const href = src.startsWith('http') ? src : `${base}/${src.replace(/^\//, '')}`;
+---
+
+<figure class="pdf-viewer">
+  <figcaption class="pdf-bar">
+    {
+      arxiv ? (
+        <a class="pdf-title" href={arxiv} target="_blank" rel="noopener">
+          {title}
+        </a>
+      ) : (
+        <span class="pdf-title">{title}</span>
+      )
+    }
+    <a class="pdf-open" href={href} target="_blank" rel="noopener">在新标签打开 ↗</a>
+  </figcaption>
+  <iframe class="pdf-frame" src={href} title={title} loading="lazy"></iframe>
+  <p class="pdf-fallback">无法内嵌 PDF？<a href={href} download>下载</a>。</p>
+</figure>
+
+<style>
+  .pdf-viewer {
+    margin: 1.5rem 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .pdf-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    font-size: var(--sl-text-sm);
+  }
+  .pdf-title {
+    overflow: hidden;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .pdf-open {
+    margin-inline-start: auto;
+    color: var(--sl-color-text-accent);
+    white-space: nowrap;
+  }
+  .pdf-frame {
+    display: block;
+    width: 100%;
+    height: 80vh;
+    border: 0;
+  }
+  .pdf-fallback {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+  }
+</style>

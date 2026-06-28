@@ -1,0 +1,11 @@
+{
+  "name": "blog-starlight",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter docs dev",
+    "build": "pnpm --filter docs build",
+    "preview": "pnpm --filter docs preview"
+  }
+}
