@@ -20,6 +20,15 @@
 
 这里的关键不是“模型像人一样理解了数据”，而是“参数被不断调整，使训练目标下降”。
 
+```mermaid
+flowchart LR
+  P0["当前参数"] --> Pred["产生预测"]
+  Pred --> Loss["计算损失"]
+  Loss --> Grad["估计坡度"]
+  Grad --> P1["参数走一步"]
+  P1 --> Pred
+```
+
 ## 损失曲线上的下降路径
 
 <svg class="dl-figure" viewBox="0 0 920 360" role="img" aria-labelledby="gd-title">
@@ -91,6 +100,13 @@ def gradient_descent_step(w, x, y, lr):
 ### 学习率像步长
 
 学习率不是越大越好。它控制的是“相信当前梯度到什么程度”。梯度只描述当前位置附近的坡度，如果一步走太远，新的位置可能已经不适用原来的局部信息。
+
+```mermaid
+flowchart TD
+  LR["学习率"] --> Small["太小: 走得稳但慢"]
+  LR --> Good["合适: 稳定下降"]
+  LR --> Large["太大: 来回震荡"]
+```
 
 ### 批量、随机和小批量
 

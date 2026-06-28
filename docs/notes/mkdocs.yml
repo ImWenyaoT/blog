@@ -19,20 +19,24 @@ theme:
 nav:
   - 介绍: index.md
   - 快速开始: reading-route.md
-  - 论文:
-      - ReAct: papers/react.md
-      - SWE-agent: papers/swe-agent.md
-  - 主题:
-      - Agent 基本概念: topics/agent-basics.md
-      - 实现与 provider 边界: topics/implementation-boundaries.md
-      - 长期记忆: topics/long-term-memory.md
-  - Deep Learning:
-      - 专题导读: deep-learning/index.md
-      - 神经网络的结构: deep-learning/neural-network-structure.md
-      - 梯度下降法: deep-learning/gradient-descent.md
-      - 反向传播算法: deep-learning/backpropagation.md
-      - GPT 是什么: deep-learning/gpt-transformer.md
-      - 注意力机制: deep-learning/attention.md
+  - Topics:
+      - AI Agent:
+          - Topic 导读: ai-agent/index.md
+          - Articles:
+              - Agent 基本概念: topics/agent-basics.md
+              - 实现与 provider 边界: topics/implementation-boundaries.md
+              - 长期记忆: topics/long-term-memory.md
+          - Papers:
+              - ReAct: papers/react.md
+              - SWE-agent: papers/swe-agent.md
+      - Deep Learning:
+          - Topic 导读: deep-learning/index.md
+          - Articles:
+              - 神经网络的结构: deep-learning/neural-network-structure.md
+              - 梯度下降法: deep-learning/gradient-descent.md
+              - 反向传播算法: deep-learning/backpropagation.md
+              - GPT 是什么: deep-learning/gpt-transformer.md
+              - 注意力机制: deep-learning/attention.md
 
 markdown_extensions:
   - fenced_code

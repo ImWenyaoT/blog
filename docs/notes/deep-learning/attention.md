@@ -24,6 +24,18 @@ Query 和 Key 的相似度越高，对应 Value 的权重越大。
 
 这个机制很适合替代“只靠固定窗口”或“只靠单一隐藏状态”的序列建模方法。
 
+```mermaid
+flowchart LR
+  Current["当前位置"] --> Query["提出 Query"]
+  Context["上下文 token"] --> Key["提供 Key"]
+  Context --> Value["携带 Value"]
+  Query --> Match["匹配分数"]
+  Key --> Match
+  Match --> Weights["softmax 权重"]
+  Weights --> Mix["加权汇总 Value"]
+  Value --> Mix
+```
+
 ## Q/K/V 流程
 
 <svg class="dl-figure" viewBox="0 0 920 360" role="img" aria-labelledby="qkv-title">
@@ -147,6 +159,16 @@ output = weights @ values
 ### Multi-head 不是重复劳动
 
 一个注意力头只能在一个表示子空间里匹配关系。多头注意力让模型并行学习不同关系：有的头可能更关注局部搭配，有的头可能更关注长距离指代，有的头可能关注语法角色。
+
+```mermaid
+flowchart TD
+  X["同一段上下文"] --> H1["Head 1: 局部搭配"]
+  X --> H2["Head 2: 指代关系"]
+  X --> H3["Head 3: 语法角色"]
+  H1 --> Cat["拼接/投影"]
+  H2 --> Cat
+  H3 --> Cat
+```
 
 ## 限制
 
