@@ -26,14 +26,28 @@ theme:
   icon:
     repo: fontawesome/brands/github
   features:
+    # 即时导航（SPA 式无刷新切页 + 悬停预取 + 顶部进度条）——单版本站可用，官方因多版本而注释掉
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    # 官方站启用的导航结构与滚动动效
+    - navigation.tabs
+    - navigation.sections
+    - navigation.tracking
     - navigation.top
+    - navigation.footer
     - navigation.indexes
     - toc.follow
+    # 内容交互
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+    # 搜索
     - search.suggest
     - search.highlight
-    - content.code.copy
-    - content.action.edit
+    - search.share
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
