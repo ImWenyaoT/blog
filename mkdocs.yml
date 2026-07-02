@@ -22,6 +22,9 @@ validation:
 theme:
   name: material
   language: zh
+  font:
+    text: Noto Sans SC
+    code: Noto Sans Mono
   favicon: assets/favicon.svg
   icon:
     repo: fontawesome/brands/github
@@ -30,6 +33,7 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
+    - navigation.instant.preview
     # 官方站启用的导航结构与滚动动效
     - navigation.tabs
     - navigation.sections
@@ -49,16 +53,27 @@ theme:
     - search.highlight
     - search.share
   palette:
+    # 跟随系统（默认档）
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: 切换到浅色模式
+    # 浅色
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: white
+      accent: blue
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-7
         name: 切换到深色模式
+    # 深色
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: black
+      accent: blue
       toggle:
-        icon: material/weather-sunny
-        name: 切换到浅色模式
+        icon: material/brightness-4
+        name: 切换到跟随系统
 
 markdown_extensions:
   - admonition

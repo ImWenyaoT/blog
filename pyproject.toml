@@ -3,6 +3,7 @@ name = "website"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
+    "jieba>=0.42.1",
     "mkdocs-material>=9.7.6",
 ]
 

@@ -2,7 +2,7 @@
  * 由 Astro Starlight 迁移而来：原 --sl-color-* 令牌映射到 Material --md-* 令牌
  * （随亮/暗调色自动适配）；语义色（蓝/绿/橙/灰）沿用固定 RGB。 */
 :root {
-  --dl-blue: 0 110 243;
+  --dl-blue: 0 122 255; /* 与站点强调色对齐：Apple 系统蓝 #007AFF */
   --dl-green: 28 193 53;
   --dl-orange: 243 137 0;
   --dl-gray: 130 130 135;
@@ -122,4 +122,48 @@
   padding: 0.5rem 0.75rem;
   font-size: 0.7rem;
   color: var(--md-default-fg-color--light);
+}
+
+/* ============================================================
+   Apple-HIG 配色与排版
+   配色 = 中性(墨/灰/白，来自 Material white/black/slate) + 唯一强调色 Apple 蓝（≤3 色）。
+   顶栏白/近黑走 Material 内置 primary=white/black；此处只把强调色与链接钉成 Apple 蓝。
+   系统蓝 #007AFF(浅)/#0A84FF(深)；链接用 apple.com web 蓝 #0066cc(浅)/#2997ff(深，对比更佳)。
+   ============================================================ */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #ffffff; /* 白顶栏（Apple 极简 chrome） */
+  --md-primary-fg-color--light: #f5f5f7;
+  --md-primary-fg-color--dark: #d2d2d7; /* 顶栏底分隔/阴影 */
+  --md-primary-bg-color: #1d1d1f; /* 顶栏文字/图标/搜索：墨黑 */
+  --md-primary-bg-color--light: #6e6e73;
+  --md-accent-fg-color: #0066cc;
+  --md-typeset-a-color: #0066cc;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #1d1d1f; /* 近黑顶栏 */
+  --md-primary-fg-color--light: #2d2d2f;
+  --md-primary-fg-color--dark: #000000;
+  --md-primary-bg-color: #f5f5f7;
+  --md-primary-bg-color--light: #86868b;
+  --md-accent-fg-color: #2997ff;
+  --md-typeset-a-color: #2997ff;
+}
+
+/* 排版：Apple 式抗锯齿 + 舒展行距 + 克制的粗体层级（配 Noto Sans SC）。 */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.md-typeset {
+  line-height: 1.7; /* CJK 充足行距，阅读更松弛 */
+}
+.md-typeset h1 {
+  font-weight: 700;
+}
+.md-typeset h2 {
+  font-weight: 700;
+  margin-top: 2.4rem; /* 章节间呼吸感 */
+}
+.md-typeset h3 {
+  font-weight: 600;
 }
