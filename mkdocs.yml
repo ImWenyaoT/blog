@@ -22,9 +22,6 @@ validation:
 theme:
   name: material
   language: zh
-  font:
-    text: Noto Sans SC
-    code: Noto Sans Mono
   favicon: assets/favicon.svg
   icon:
     repo: fontawesome/brands/github

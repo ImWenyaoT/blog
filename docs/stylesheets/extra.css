@@ -149,7 +149,7 @@
   --md-typeset-a-color: #2997ff;
 }
 
-/* 排版：Apple 式抗锯齿 + 舒展行距 + 克制的粗体层级（配 Noto Sans SC）。 */
+/* 排版：Apple 式抗锯齿 + 舒展行距 + 克制的粗体层级（字体用 Material 默认）。 */
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
